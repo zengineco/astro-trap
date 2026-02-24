@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>AstroTrap — Rogue Asteroid Harvester</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- MAIN MENU -->
+<div id="menu-screen" class="screen active">
+  <div class="menu-bg"></div>
+  <div class="menu-content">
+    <div class="logo-wrap">
+      <div class="logo-sub">⬡ DEEP SPACE MINING AUTHORITY ⬡</div>
+      <h1 class="logo-title">ASTRO<span>TRAP</span></h1>
+      <div class="logo-tagline">Rogue Asteroid Harvesting System v2.4</div>
+    </div>
+    <div class="menu-buttons">
+      <button class="btn btn-primary" id="btn-play">▶ LAUNCH MISSION</button>
+      <button class="btn btn-secondary" id="btn-options">⚙ OPTIONS</button>
+      <button class="btn btn-secondary" id="btn-scores">☆ HIGH SCORES</button>
+    </div>
+    <div class="menu-hint">Left-click: vertical beam &nbsp;|&nbsp; Right-click: horizontal beam</div>
+  </div>
+</div>
+
+<!-- OPTIONS SCREEN -->
+<div id="options-screen" class="screen">
+  <div class="panel">
+    <h2 class="panel-title">⚙ MISSION OPTIONS</h2>
+    <div class="option-row">
+      <label>SOUND</label>
+      <div class="toggle-wrap">
+        <button class="toggle-btn active" id="opt-sound">ON</button>
+      </div>
+    </div>
+    <div class="option-row">
+      <label>SPEED</label>
+      <div class="toggle-wrap">
+        <button class="toggle-btn" id="opt-speed-normal" data-speed="normal">NORMAL</button>
+        <button class="toggle-btn" id="opt-speed-fast" data-speed="fast">FAST</button>
+        <button class="toggle-btn active" id="opt-speed-standard" data-speed="standard">STANDARD</button>
+      </div>
+    </div>
+    <div class="option-row">
+      <label>START LEVEL</label>
+      <div class="toggle-wrap">
+        <input type="number" id="opt-start-level" min="1" max="10" value="1" class="num-input">
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btn-options-back">◀ BACK</button>
+  </div>
+</div>
+
+<!-- HIGH SCORES SCREEN -->
+<div id="scores-screen" class="screen">
+  <div class="panel">
+    <h2 class="panel-title">☆ SECTOR COMMANDERS</h2>
+    <div id="scores-list" class="scores-list"></div>
+    <button class="btn btn-secondary" id="btn-clear-scores">CLEAR DATA</button>
+    <button class="btn btn-primary" id="btn-scores-back">◀ BACK</button>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="game-screen" class="screen">
+  <div id="hud">
+    <div class="hud-section">
+      <span class="hud-label">SECTOR</span>
+      <span class="hud-value" id="hud-level">01</span>
+    </div>
+    <div class="hud-section">
+      <span class="hud-label">SCORE</span>
+      <span class="hud-value" id="hud-score">000000</span>
+    </div>
+    <div class="hud-section">
+      <span class="hud-label">HARVESTED</span>
+      <div class="hud-progress-wrap">
+        <div class="hud-progress-bar" id="hud-progress-bar"></div>
+        <span class="hud-value" id="hud-percent">0%</span>
+      </div>
+    </div>
+    <div class="hud-section">
+      <span class="hud-label">SHIPS</span>
+      <div id="hud-lives" class="lives-display"></div>
+    </div>
+    <div class="hud-section hud-controls">
+      <button class="hud-btn" id="btn-mode-toggle" title="Toggle beam direction (V/H)">⇕ VERT</button>
+      <button class="hud-btn" id="btn-pause" title="Pause (P)">⏸</button>
+      <button class="hud-btn" id="btn-mute" title="Mute (M)">🔊</button>
+    </div>
+  </div>
+  <div id="canvas-wrap">
+    <canvas id="game-canvas"></canvas>
+    <div id="overlay-msg" class="overlay-msg hidden"></div>
+  </div>
+</div>
+
+<!-- GAME OVER SCREEN -->
+<div id="gameover-screen" class="screen">
+  <div class="panel gameover-panel">
+    <h2 class="panel-title" id="go-title">MISSION FAILED</h2>
+    <div class="go-stats">
+      <div class="go-stat"><span class="go-label">SECTOR REACHED</span><span class="go-val" id="go-level">-</span></div>
+      <div class="go-stat"><span class="go-label">FINAL SCORE</span><span class="go-val" id="go-score">-</span></div>
+      <div class="go-stat"><span class="go-label">BEST SCORE</span><span class="go-val" id="go-best">-</span></div>
+    </div>
+    <div id="go-name-wrap" class="go-name-wrap">
+      <input type="text" id="go-name-input" placeholder="ENTER COMMANDER NAME" maxlength="12" class="name-input">
+      <button class="btn btn-primary" id="btn-save-score">SAVE SCORE</button>
+    </div>
+    <div class="go-buttons">
+      <button class="btn btn-primary" id="btn-retry">↺ RETRY MISSION</button>
+      <button class="btn btn-secondary" id="btn-go-menu">⌂ BASE CAMP</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
